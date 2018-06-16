@@ -73,3 +73,8 @@ The only exception is the default `root:root` user, which **you should remove be
 | **Method** | GET |
 | **Path** | [/api/v1/users](http://localhost/api/v1/users/me) |
 | **Parameters** | - |
+
+
+## TODO
+
+- Authentication button on Swagger UI 

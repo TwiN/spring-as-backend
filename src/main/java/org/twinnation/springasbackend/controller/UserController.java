@@ -2,6 +2,7 @@ package org.twinnation.springasbackend.controller;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class UserController {
 	
 	@GetMapping("/users/me")
 	public UserDto getCurrentUser(Authentication authentication) throws Exception {
+		System.out.println(authentication.getPrincipal().getClass());
 		return new UserDto(authentication);
 	}
 	
@@ -43,6 +45,7 @@ public class UserController {
 	
 	@PostMapping("/users")
 	@PreAuthorize("!isAuthenticated()")
+	@ResponseStatus(HttpStatus.CREATED)
 	public ServerMessage createUser(@RequestParam String username, @RequestParam String password) throws Exception {
 		return userService.createUser(username, password);
 	}

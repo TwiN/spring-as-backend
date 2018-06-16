@@ -34,7 +34,7 @@ public class UserDto {
 	}
 	
 	
-	public UserDto(Authentication authentication) throws Exception {
+	public UserDto(Authentication authentication) throws UnauthenticatedException {
 		if (authentication == null) {
 			throw new UnauthenticatedException();
 		}
