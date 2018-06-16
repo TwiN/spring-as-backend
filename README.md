@@ -89,7 +89,7 @@ The only exception is the default `root:root` user, which **you should remove be
 | Key | Value | 
 |:---:|:---:|
 | **Method** | GET |
-| **Path** | [/api/v1/users](http://localhost/api/v1/users/me) |
+| **Path** | [/api/v1/users/me](http://localhost/api/v1/users/me) |
 | **Parameters** | - |
 
 
