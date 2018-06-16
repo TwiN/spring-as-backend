@@ -35,7 +35,6 @@ public class UserController {
 	
 	
 	@GetMapping("/users/{id}")
-	//@PreAuthorize("hasRole('ADMIN')")
 	public UserDto getUserById(@PathVariable Long id) throws Exception {
 		return new UserDto(userService.getUserById(id));
 	}
@@ -45,6 +44,13 @@ public class UserController {
 	@PreAuthorize("!isAuthenticated()")
 	public ServerMessage createUser(@RequestParam String username, @RequestParam String password) throws Exception {
 		return userService.createUser(username, password);
+	}
+	
+	
+	@DeleteMapping("/users/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public ServerMessage deleteUserById(@PathVariable Long id) throws Exception {
+		return userService.deleteUserById(id);
 	}
 	
 	

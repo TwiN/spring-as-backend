@@ -54,6 +54,16 @@ public class UserService implements UserDetailsService {
 	}
 	
 	
+	public ServerMessage deleteUserById(Long id) throws Exception {
+		User user = getUserById(id);
+		if (user == null) {
+			throw new Exception("There is no user with that id");
+		}
+		userRepository.delete(user);
+		return new ServerMessage(false, "User '" + user.getUsername() + "' has been deleted.");
+	}
+	
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("[loadUserByUsername] username="+username);
@@ -69,5 +79,5 @@ public class UserService implements UserDetailsService {
 		user.setAuthorities(authorities);
 		return user;
 	}
-	
+
 }
