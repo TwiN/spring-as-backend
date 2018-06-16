@@ -3,6 +3,8 @@ package org.twinnation.springasbackend.dto;
 import com.google.gson.Gson;
 import org.springframework.security.core.Authentication;
 import org.twinnation.springasbackend.bean.User;
+import org.twinnation.springasbackend.exception.InvalidUserException;
+import org.twinnation.springasbackend.exception.UnauthenticatedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class UserDto {
 	
 	public UserDto(User user) throws Exception {
 		if (user == null) {
-			throw new Exception("User is null");
+			throw new InvalidUserException();
 		}
 		this.id = user.getId();
 		this.username = user.getUsername();
@@ -34,7 +36,7 @@ public class UserDto {
 	
 	public UserDto(Authentication authentication) throws Exception {
 		if (authentication == null) {
-			throw new Exception("User is not authenticated");
+			throw new UnauthenticatedException();
 		}
 		User user = (User)authentication.getPrincipal();
 		this.id = user.getId();

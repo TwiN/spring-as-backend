@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.twinnation.springasbackend.bean.User;
 import org.twinnation.springasbackend.dto.ServerMessage;
+import org.twinnation.springasbackend.exception.UsernameAlreadyInUseException;
+import org.twinnation.springasbackend.exception.ValidationException;
 import org.twinnation.springasbackend.repository.UserRepository;
 import org.twinnation.springasbackend.util.ValidationUtil;
 
@@ -43,10 +45,10 @@ public class UserService implements UserDetailsService {
 	}
 	
 	
-	public ServerMessage createUser(String username, String password) throws Exception {
+	public ServerMessage createUser(String username, String password) throws ValidationException, UsernameAlreadyInUseException {
 		if (ValidationUtil.isUsernameValid(username) && ValidationUtil.isPasswordValid(password)) {
-			if (getUserByUsername(username) == null) {
-				return new ServerMessage(true, "Username is already in use");
+			if (getUserByUsername(username) != null) {
+				throw new UsernameAlreadyInUseException();
 			}
 			userRepository.save(new User(username, passwordEncoder.encode(password)));
 		}

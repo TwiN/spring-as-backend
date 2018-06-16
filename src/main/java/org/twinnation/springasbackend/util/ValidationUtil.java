@@ -15,7 +15,7 @@ public interface ValidationUtil {
 	}
 	
 	
-	static boolean isUsernameValid(String username) throws Exception {
+	static boolean isUsernameValid(String username) throws ValidationException {
 		if (isNullOrEmpty(username)) {
 			throw new ValidationException("Username cannot be empty");
 		} else if (username.length() < 4) {

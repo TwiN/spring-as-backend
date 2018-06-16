@@ -28,13 +28,14 @@ public class UserController {
 	
 	
 	@GetMapping("/users")
-	//@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public List<UserDto> getAllUsers() {
 		return UserDto.listFromUsers(userService.getAllUsers());
 	}
 	
 	
 	@GetMapping("/users/{id}")
+	@PreAuthorize("isAuthenticated()")
 	public UserDto getUserById(@PathVariable Long id) throws Exception {
 		return new UserDto(userService.getUserById(id));
 	}
@@ -51,17 +52,6 @@ public class UserController {
 	@PreAuthorize("hasRole('ADMIN')")
 	public ServerMessage deleteUserById(@PathVariable Long id) throws Exception {
 		return userService.deleteUserById(id);
-	}
-	
-	
-	////////////////////////
-	// EXCEPTION HANDLERS //
-	////////////////////////
-	
-	
-	@ExceptionHandler({Exception.class})
-	public ServerMessage handleException(Exception e) {
-		return new ServerMessage(true, e.getMessage());
 	}
 	
 }
