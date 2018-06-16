@@ -3,7 +3,24 @@
 A ready-to-go secure Spring backend.
 
 This setup assumes that anybody can access your website, 
-but only specific features are meant to be used for authenticated users.
+but only specific features are meant to be accessed for authenticated users.
+
+If you wish to force everything to be only accessible by authenticated users, uncomment the following lines
+in `SecurityConfiguration.java`:
+
+	.authorizeRequests()
+		.antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		
+By doing so, any request to the API will redirect you to the default [login page](#login-page),
+except for:
+ 
+| Method |     Path      | Justification |
+|:------:|:-------------:|:-------------:|
+| POST   | /api/v1/users |   Register    |
+| POST   | /api/v1/login |    Login      |
+
 
 ## Features
 
@@ -32,15 +49,17 @@ You can view the swagger API by going at the following url: [/swagger-ui.html](h
 Initially, there is no user other than `root:root`, which is an admin.
 
 By default, there's a login form at the following url: [/login](http://localhost/login)
-    
-Alternatively, you can use the **login processing url** to login from your frontend: 
+
+
+#### Login processing url
+
+Alternatively, you can use the **login processing url** to login from your frontend.
 
 | Key | Value | 
 |:---:|:---:|
 | **Method** | POST |
 | **Path** | [/api/v1/login](http://localhost/api/v1/login) |
 | **Parameters** | username, password |
-
 
 Due to the nature of authentication itself, you'll need to use `POST` in order to login using the **login processing url**.
 
@@ -66,7 +85,7 @@ The only exception is the default `root:root` user, which **you should remove be
 | **Parameters** | username, password |
 
 
-### Getting authenticated user
+### Getting the authenticated user
 
 | Key | Value | 
 |:---:|:---:|
@@ -78,3 +97,4 @@ The only exception is the default `root:root` user, which **you should remove be
 ## TODO
 
 - Authentication button on Swagger UI 
+- More tests
