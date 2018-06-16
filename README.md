@@ -13,8 +13,7 @@ in `SecurityConfiguration.java`:
 		.anyRequest().authenticated()
 		.and()
 		
-By doing so, any request to the API will redirect you to the default [login page](#login-page),
-except for:
+By doing so, any request to the API will redirect you to the default [login page](#login) except for:
  
 | Method |     Path      | Justification |
 |:------:|:-------------:|:-------------:|
