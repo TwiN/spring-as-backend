@@ -28,6 +28,17 @@ By doing so, any request to the API will redirect you to the default [login page
 - Spring Session
 - RESTful API
 - User authentication + register
+- Page with some example
+
+
+## Sample Page
+
+A index page is included to help developers getting started.
+It contains the link to the application's Swagger, the link to the default login form
+as well as another login form that uses the [login processing url](#login-processing-url)
+ with a container for the server response of said example.
+
+![Index.html](https://twinnation.org/api/screenshots/2018-06-16_195854.png)
 
 
 ## Endpoints
@@ -50,7 +61,7 @@ Initially, there is no user other than `root:root`, which is an admin.
 By default, there's a login form at the following url: [/login](http://localhost/login)
 
 
-#### Login processing url
+#### Login Processing URL
 
 Alternatively, you can use the **login processing url** to login from your frontend.
 
@@ -84,7 +95,7 @@ The only exception is the default `root:root` user, which **you should remove be
 | **Parameters** | username, password |
 
 
-### Getting the authenticated user
+### Getting the Authenticated User
 
 | Key | Value | 
 |:---:|:---:|
