@@ -38,7 +38,7 @@ It contains the link to the application's Swagger, the link to the default login
 as well as another login form that uses the [login processing url](#login-processing-url)
  with a container for the server response of said example.
 
-![Index.html](https://twinnation.org/api/screenshots/2018-06-16_195854.png)
+![Sample page](/docs/img/sample-page.png)
 
 
 ## Endpoints
