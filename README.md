@@ -38,7 +38,7 @@ It contains the link to the application's Swagger, the link to the default login
 as well as another login form that uses the [login processing url](#login-processing-url)
  with a container for the server response of said example.
 
-![Sample page](/docs/img/sample-page.png)
+![Sample page](/docs/img/sab-sample-page.png)
 
 
 ## Endpoints
