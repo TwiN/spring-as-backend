@@ -66,6 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				response.setContentType("application/json");
 				response.setStatus(HttpStatus.UNAUTHORIZED.value());
 				writer.write(new ServerMessage(true, "Invalid username or password").toJson());
+				writer.flush();
 			}
 		};
 	}
@@ -81,6 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				response.setStatus(HttpStatus.ACCEPTED.value());
 				try {
 					writer.write(new UserDto(authentication).toJson());
+					writer.flush();
 				} catch (Exception e) { // this shouldn't happen, but we'll relay the exception just in case
 					throw new IOException("Couldn't create UserDto out of authentication despite its success");
 				}

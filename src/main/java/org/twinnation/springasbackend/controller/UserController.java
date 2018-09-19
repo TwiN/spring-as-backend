@@ -24,7 +24,6 @@ public class UserController {
 	
 	@GetMapping("/users/me")
 	public UserDto getCurrentUser(Authentication authentication) throws Exception {
-		System.out.println(authentication.getPrincipal().getClass());
 		return new UserDto(authentication);
 	}
 	

@@ -14,6 +14,7 @@ import org.twinnation.springasbackend.exception.UsernameAlreadyInUseException;
 import org.twinnation.springasbackend.exception.ValidationException;
 import org.twinnation.springasbackend.repository.UserRepository;
 import org.twinnation.springasbackend.util.ValidationUtil;
+import org.twinnation.superassert.SuperAssert;
 
 import java.util.HashSet;
 import java.util.List;
@@ -47,20 +48,16 @@ public class UserService implements UserDetailsService {
 	
 	public ServerMessage createUser(String username, String password) throws ValidationException, UsernameAlreadyInUseException {
 		if (ValidationUtil.isUsernameValid(username) && ValidationUtil.isPasswordValid(password)) {
-			if (getUserByUsername(username) != null) {
-				throw new UsernameAlreadyInUseException();
-			}
+			SuperAssert.isNull(getUserByUsername(username), new UsernameAlreadyInUseException());
 			userRepository.save(new User(username, passwordEncoder.encode(password)));
 		}
 		return new ServerMessage(false, "User has been created.");
 	}
 	
 	
-	public ServerMessage deleteUserById(Long id) throws Exception {
+	public ServerMessage deleteUserById(Long id) {
 		User user = getUserById(id);
-		if (user == null) {
-			throw new Exception("There is no user with that id");
-		}
+		SuperAssert.notNull(user, "There is no user with that id");
 		userRepository.delete(user);
 		return new ServerMessage(false, "User '" + user.getUsername() + "' has been deleted.");
 	}
@@ -68,11 +65,9 @@ public class UserService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("[loadUserByUsername] username="+username);
+		System.out.println("[loadUserByUsername] username=" + username);
 		User user = getUserByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("There is no user with the username '"+username+"'.");
-		}
+		SuperAssert.notNull(user, new UsernameNotFoundException("There is no user with the username '"+username+"'."));
 		Set<GrantedAuthority> authorities = new HashSet<>();
 		if (user.isAdmin()) {
 			authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
