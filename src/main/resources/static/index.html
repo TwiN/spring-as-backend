@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>spring-as-backend</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        #output {
+            font-size: 87.5%;
+            color: #e83e8c;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,9 +48,9 @@
                     <input type="button" class="btn btn-primary btn-block mt-2" onclick="login()" value="Login" />
                 </div>
             </div>
-            <div class="col-6 text-center p-2">
-                <div class="w-100 h-100 bg-dark rounded">
-                    <code id="output"></code>
+            <div class="col-6 p-2">
+                <div class="w-100 h-100 bg-dark rounded p-2">
+                   <pre id="output"></pre>
                 </div>
             </div>
         </div>
@@ -59,7 +65,7 @@
 			var xmlHttpRequest = new XMLHttpRequest();
 			xmlHttpRequest.onreadystatechange = function() {
 				if (this.readyState === 4) {
-					$("#output").html(xmlHttpRequest.responseText);
+					$("#output").html(JSON.stringify(JSON.parse(xmlHttpRequest.responseText), null, 2));
 				}
 			};
 			xmlHttpRequest.open("POST", "/api/v1/login?username="+$("#username").val()+"&password="+$("#password").val(), true);
