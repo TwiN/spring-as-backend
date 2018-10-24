@@ -51,14 +51,14 @@ Only the necessary endpoints will be listed here. A full list of endpoints can b
 The Swagger UI is there to facilitate the development of your application, as it can allow you
 to easily view and interact with the backend's API.
 
-You can view the swagger API by going at the following url: [/swagger-ui.html](http://localhost/swagger-ui.html)
+You can view the swagger API by going at the following url: `/swagger-ui.html`
 
 
 ### Login
 
 Initially, there is no user other than `root:root`, which is an admin.
 
-By default, there's a login form at the following url: [/login](http://localhost/login)
+By default, there's a login form at the following url: `/login`
 
 
 #### Login Processing URL
@@ -68,7 +68,7 @@ Alternatively, you can use the **login processing url** to login from your front
 | Key | Value | 
 |:---:|:---:|
 | **Method** | POST |
-| **Path** | [/api/v1/login](http://localhost/api/v1/login) |
+| **Path** | `/api/v1/login` |
 | **Parameters** | username, password |
 
 Due to the nature of authentication itself, you'll need to use `POST` in order to login using the **login processing url**.
@@ -79,7 +79,7 @@ Due to the nature of authentication itself, you'll need to use `POST` in order t
 | Key | Value | 
 |:---:|:---:|
 | **Method** | GET |
-| **Path** | [/logout](http://localhost/logout) |
+| **Path** | `/logout` |
 | **Parameters** | - |
 
 
@@ -91,7 +91,7 @@ The only exception is the default `root:root` user, which **you should remove be
 | Key | Value | 
 |:---:|:---:|
 | **Method** | POST |
-| **Path** | [/api/v1/users](http://localhost/api/v1/users) |
+| **Path** | `/api/v1/users` |
 | **Parameters** | username, password |
 
 
@@ -100,7 +100,7 @@ The only exception is the default `root:root` user, which **you should remove be
 | Key | Value | 
 |:---:|:---:|
 | **Method** | GET |
-| **Path** | [/api/v1/users/me](http://localhost/api/v1/users/me) |
+| **Path** | `/api/v1/users/me` |
 | **Parameters** | - |
 
 
