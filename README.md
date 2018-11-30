@@ -21,6 +21,13 @@ By doing so, any request to the API will redirect you to the default [login page
 | POST   | /api/v1/login |    Login      |
 
 
+## Usage with Docker
+
+```
+docker-compose up
+```
+
+
 ## Features
 
 - Swagger UI

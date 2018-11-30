@@ -1,0 +1,12 @@
+version: '3.2'
+services:
+  spring-as-backend:
+    build: .
+    restart: always
+    command: ["java", "-jar", "spring-as-backend.jar", "--spring.profiles.active=dev"]
+    container_name: "spring-as-backend"
+    ports:
+    - 8080:8080
+
+
+

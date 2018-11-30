@@ -91,7 +91,7 @@
 		<dependency>
 			<groupId>org.twinnation</groupId>
 			<artifactId>super-assert</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 	</dependencies>
@@ -103,6 +103,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>${project.name}</finalName>
 	</build>
 
 </project>
