@@ -2,7 +2,7 @@ package org.twinnation.springasbackend.dto;
 
 import com.google.gson.Gson;
 import org.springframework.security.core.Authentication;
-import org.twinnation.springasbackend.bean.User;
+import org.twinnation.springasbackend.domain.User;
 import org.twinnation.springasbackend.exception.InvalidUserException;
 import org.twinnation.springasbackend.exception.UnauthenticatedException;
 

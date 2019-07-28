@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.twinnation.springasbackend.bean.User;
+import org.twinnation.springasbackend.domain.User;
 import org.twinnation.springasbackend.dto.ServerMessage;
 import org.twinnation.springasbackend.exception.UsernameAlreadyInUseException;
 import org.twinnation.springasbackend.exception.ValidationException;
